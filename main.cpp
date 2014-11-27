@@ -1,8 +1,11 @@
+#ifndef MAIN
+#define MAIN
 #include "main.h"
 
 
 int main(){
-  int t = 8;
+  srand(time(NULL));
+  int t = 6;
   //utwórz pola
   Pole **pole = new Pole*[t];
   for (int i = 0; t>i; i++){
@@ -13,3 +16,4 @@ int main(){
   system("PAUSE");
   return 0;
 }
+#endif

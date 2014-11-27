@@ -12,8 +12,8 @@ protected:
   int losuj(int zakres);
   int jakiStylPola(int wylosowana);
   int ktoryBrzegPola();
-  Point jakiRodzajBrzegu(int glowne, int krawedz);
-
+  bool sprZgodnosci(Pole pole, int t);
+  
 
 public:
   Pole();
@@ -25,17 +25,19 @@ public:
   int getY();
   int getBrzegPola();
   int getStylPola();
-
+  int getKrawedz();
   void losowaniePola();
+  Kafelka setKafelka(int glowne, int krawdz, int ktoraKrawedz);
+  Pole wylosujPoprawnie(Pole pole, int t);
 
 private:
   Point kordynaty;
-  string nazwa;
+  Kafelka kafelka;
+  //zmienne pomocnicze
   int jakiePole;
   int ktoryBrzeg;
-  Point rodzajBrzegu;
   int jakaKrawedz;
-  Kafelka kafelka;
+  
 };
 
 #endif // POLE_H
