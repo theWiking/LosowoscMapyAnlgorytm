@@ -8,6 +8,7 @@ void ustawKordynatyPol(Pole **pole, int t){
     }
   }
 }
+/*
 bool sprawdzPoprawnosc(Pole **pole, int x, int y, int t){
   //*--
   //-+-
@@ -68,43 +69,76 @@ bool sprawdzPoprawnosc(Pole **pole, int x, int y, int t){
   return true;
 }
 
+bool sprZgodnosci(Pole pole, int t){
+  if (pole.getStylPola()>3 || pole.getStylPola()<1)
+    return false;
+  if (pole.getBrzegPola()>3 || pole.getBrzegPola()<1)
+    return false;
+  if (pole.getKrawedz()>8 || pole.getKrawedz()<0)
+    return false;
+  return true;
+}
+int losuj(int zakres){
+  return rand()&zakres;
+}
+Pole wylosujPoprawnie(Pole pole, int t){
+  bool test = false;
+  while (!test){
+    if (sprZgodnosci(pole, t))
+      break;
+    else
+       pole.setKafelka(losuj(3)+1,losuj(3)+1,losuj(9));
+   // cout << "Pole:" << pole.getStylPola() << "Krawedz:" << pole.getBrzegPola() << "KtoraKrawedz:" << pole.getKrawedz() << " ";
 
-bool sprawdzSasiadujace(Pole poleWczesnieje,Pole Obecne, int x, int y, int t){
+  }
+ 
+  return pole;
+}
+
+bool sprawdzSasiadujace(Pole **pole, int x, int y, int t){
   //--+ +--
   //--+ +--
   //--+ +--
   
 
- // cout << "Pole:" << Obecne.getStylPola() << "Krawedz:" << Obecne.getBrzegPola() << "KtoraKrawedz:" << Obecne.getKrawedz() << " ";
- // if (x==0)
- // return false;
-  if (poleWczesnieje.getStylPola() != Obecne.getStylPola())
-  if (poleWczesnieje.getBrzegPola() == Obecne.getBrzegPola())
-  if (poleWczesnieje.getKrawedz() == 5 && Obecne.getKrawedz() == 3)
-      return false;
-  if (poleWczesnieje.getStylPola() == Obecne.getStylPola()){
-   // cout << "test";
-    if (poleWczesnieje.getBrzegPola() == Obecne.getBrzegPola()){
+   if (x==0)
+  return false;
+  else if (pole[x-1][y].getStylPola() != pole[x][y].getStylPola())
+  if (pole[x-1][y].getBrzegPola() == pole[x][y].getBrzegPola())
+  if (pole[x - 1][y].getKrawedz() == 5 && pole[x][y].getKrawedz() == 3){
     
-      if ((poleWczesnieje.getKrawedz() == 3 && Obecne.getKrawedz() == 5) ||
-        (poleWczesnieje.getKrawedz() == 1 && Obecne.getKrawedz() == 2) ||
-        (poleWczesnieje.getKrawedz() == 0 && Obecne.getKrawedz() == 1) ||
-        (poleWczesnieje.getKrawedz() == 0 && Obecne.getKrawedz() == 2) ||
-        (poleWczesnieje.getKrawedz() == 6 && Obecne.getKrawedz() == 7) ||
-        (poleWczesnieje.getKrawedz() == 6 && Obecne.getKrawedz() == 8) ||
-        (poleWczesnieje.getKrawedz() == 5 && Obecne.getKrawedz() == 3) ||
-        (poleWczesnieje.getKrawedz() == 4 && Obecne.getKrawedz() == 5) ||
-        (poleWczesnieje.getKrawedz() == 3 && Obecne.getKrawedz() == 4)){
-   
+    return false;
+  }
+      
+  else if (pole[x-1][y].getStylPola() == pole[x][y].getStylPola()){
+   // cout << "test";
+    if (pole[x-1][y].getBrzegPola() == pole[x][y].getBrzegPola()){
+    
+      if ((pole[x-1][y].getKrawedz() == 3 && pole[x][y].getKrawedz() == 5) ||
+        (pole[x-1][y].getKrawedz() == 1 && pole[x][y].getKrawedz() == 2) ||
+        (pole[x-1][y].getKrawedz() == 0 && pole[x][y].getKrawedz() == 1) ||
+        (pole[x-1][y].getKrawedz() == 0 && pole[x][y].getKrawedz() == 2) ||
+        (pole[x-1][y].getKrawedz() == 6 && pole[x][y].getKrawedz() == 7) ||
+        (pole[x-1][y].getKrawedz() == 6 && pole[x][y].getKrawedz() == 8) ||
+        (pole[x-1][y].getKrawedz() == 5 && pole[x][y].getKrawedz() == 3) ||
+        (pole[x-1][y].getKrawedz() == 4 && pole[x][y].getKrawedz() == 5) ||
+        (pole[x-1][y].getKrawedz() == 3 && pole[x][y].getKrawedz() == 4)){
+       // wylosujPoprawnie(pole[x][y], t);
         return false;
 
       }
       }  
       
         }
+  wylosujPoprawnie(pole[x][y], t);
+  //cout << "Pole:" << pole[x][y].getStylPola() << "Krawedz:" << pole[x][y].getBrzegPola() << "KtoraKrawedz:" << pole[x][y].getKrawedz() << " ";
 
     return true;
 
+}
+*/
+void wypiszDane(Pole **pole, int t){
+  
 }
 
 
@@ -118,21 +152,14 @@ Pole buffor;
 
         pole[x][y].wypiszKordynaty(); //wpisuje kordynaty do tablicy x=x y=y;
         test = true;
-        pole[x][y] = pole[x][y].wylosujPoprawnie(pole[x][y], t);
-              // while (test){
-                 //losuje bez pustych pól 
-                 
-        //if (x!=0)
-                   // test = sprawdzSasiadujace(pole[x - 1][y], pole[x][y], x, y, t);
-                  //  if (test==false)
-                  //    break;
-                 //   else
-                  //    pole[x][y] = pole[x][y].wylosujPoprawnie(pole[x][y], t);
-                    
-               
-         //cout<<test;      
        
-      cout<<"Pole:"<<pole[x][y].getStylPola()<< "Krawedz:" << pole[x][y].getBrzegPola()<< "KtoraKrawedz:" << pole[x][y].getKrawedz()<< " ";
+  
+        pole[x][y].setStylPola(pole[x][y].losStylPola());
+        pole[x][y].losDrzewo(pole[x][y].getStylPola());
+                  
+                    
+    
+        cout << "Pole:" << pole[x][y].losStylPola() << "Drzewo:" << pole[x][y].czyDrzewo();
       cout << endl;
     }
     cout << endl;

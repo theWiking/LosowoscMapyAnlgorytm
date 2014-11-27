@@ -4,7 +4,7 @@
 
 Pole::Pole(){
   //ctor
-  setKafelka(1,1,4);
+ 
 
 }
 

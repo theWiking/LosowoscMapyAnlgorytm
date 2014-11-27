@@ -5,7 +5,7 @@
 
 int main(){
   srand(time(NULL));
-  int t = 6;
+  int t = 4;
   //utwórz pola
   Pole **pole = new Pole*[t];
   for (int i = 0; t>i; i++){

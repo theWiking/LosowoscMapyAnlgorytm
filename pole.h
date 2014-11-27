@@ -11,8 +11,8 @@ class Pole{
 protected:
   int losuj(int zakres);
   int jakiStylPola(int wylosowana);
-  int ktoryBrzegPola();
-  bool sprZgodnosci(Pole pole, int t);
+  //int ktoryBrzegPola();
+  //bool sprZgodnosci(Pole pole, int t);
   
 
 public:
@@ -23,20 +23,26 @@ public:
   void wypiszKordynaty();
   int getX();
   int getY();
-  int getBrzegPola();
+  //int getBrzegPola();
+  int losStylPola();
   int getStylPola();
-  int getKrawedz();
-  void losowaniePola();
-  Kafelka setKafelka(int glowne, int krawdz, int ktoraKrawedz);
-  Pole wylosujPoprawnie(Pole pole, int t);
+  void setStylPola(int styl);
+  //int getKrawedz();
+  void losowaniePola(int styl);
+  void losDrzewo(int styl);
+  bool czyDrzewo();
+  //void setKafelka(int glowne, int krawdz, int ktoraKrawedz);
+  //Pole wylosujPoprawnie(Pole pole, int t);
 
 private:
   Point kordynaty;
-  Kafelka kafelka;
+  int stylPola;
+  bool drzewo;
+  //Kafelka kafelka;
   //zmienne pomocnicze
-  int jakiePole;
-  int ktoryBrzeg;
-  int jakaKrawedz;
+  //int jakiePole;
+  //int ktoryBrzeg;
+  //int jakaKrawedz;
   
 };
 
